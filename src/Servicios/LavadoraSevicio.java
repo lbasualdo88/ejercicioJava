@@ -15,21 +15,19 @@ public class LavadoraSevicio implements ElectServicio{
     
     public Lavadora crearLavadora() {
         
-        Lavadora lava =  (Lavadora) crearElectrodomestico();
+
+        
+        Electrodomestico e2 = crearElectrodomestico();
+        precioFinal(e2, e2.getPeso(), e2.getPrecio());
         
         System.out.println("-------------");
         System.out.println("Ingrese Carga");
         System.out.println("-------------");
-        String carga = leer.next();
+        int carga = leer.nextInt();
         
-        lava.setCarga(carga);
-        System.out.println("-------------");
-        System.out.println(lava);
-        System.out.println("-------------");
-
-        return lava;
+        return new Lavadora(e2.getPrecio(), e2.getColor(), e2.getConsumo(), e2.getPeso(), carga);
     }
-    
+
     public void mostrarLavadora() {
     }
     public void precioLavadoraFinal() {
@@ -67,8 +65,6 @@ public class LavadoraSevicio implements ElectServicio{
         Electrodomestico e1 = new Electrodomestico();
         System.out.println("------------------------------");
         System.out.println("Se le asigna por defecto 1000$");
-        double precio = 1000;
-        e1.setPrecio(precio);
         System.out.println("----------------------------------");
         System.out.println("Ingrese color del electrodomestico");
         System.out.println("----------------------------------");
@@ -84,52 +80,53 @@ public class LavadoraSevicio implements ElectServicio{
         System.out.println("------------------------------------");
         double peso = leer.nextDouble();
         e1.setPeso(peso);
+        
  return e1;
     }
     @Override
-    public void precioFinal(Electrodomestico e1, double peso, double precio) {
-        if (e1.getPeso() <= 19 ) {
-            e1.setPrecio(e1.getPrecio() + 100);
-        } else if (e1.getPeso() > 19 && e1.getPeso() <= 49) {
-            e1.setPrecio(e1.getPrecio() + 500);
-        } else if (e1.getPeso() > 50 && e1.getPeso() <= 79) {
-            e1.setPrecio(e1.getPrecio() + 800);
+    public void precioFinal(Electrodomestico e2, double peso, double precio) {
+        if (e2.getPeso() <= 19 ) {
+            e2.setPrecio(e2.getPrecio() + 100);
+        } else if (e2.getPeso() > 19 && e2.getPeso() <= 49) {
+            e2.setPrecio(e2.getPrecio() + 500);
+        } else if (e2.getPeso() > 50 && e2.getPeso() <= 79) {
+            e2.setPrecio(e2.getPrecio() + 800);
         } else {
-            e1.setPrecio(e1.getPrecio() + 1000);
+            e2.setPrecio(e2.getPrecio() + 1000);
         }
 
          int opcion = 0;
         ConsumoEner [] enums = ConsumoEner.values();
     for (int i = 0; i < enums.length; i++) {
-        if (e1.getConsumo().equals(enums[i])) {
+        if (e2.getConsumo().equals(enums[i])) {
              opcion = i+1;
         }
     } 
         switch (opcion) {
             case 1:
-            e1.setPrecio(e1.getPrecio() + 1000);          
+            e2.setPrecio(e2.getPrecio() + 1000);          
             break;
             case 2:
-            e1.setPrecio(e1.getPrecio() + 800);
+            e2.setPrecio(e2.getPrecio() + 800);
             break;
             case 3:
-            e1.setPrecio(e1.getPrecio() + 600);
+            e2.setPrecio(e2.getPrecio() + 600);
             break;
             case 4:
-            e1.setPrecio(e1.getPrecio() + 500);
+            e2.setPrecio(e2.getPrecio() + 500);
             break;
             case 5:
-            e1.setPrecio(e1.getPrecio() + 300);
+            e2.setPrecio(e2.getPrecio() + 300);
             break;
             case 6:
-            e1.setPrecio(e1.getPrecio() + 100);
+            e2.setPrecio(e2.getPrecio() + 100);
             break;
         } 
     }
 
     @Override
-    public void mostrarObjeto(Electrodomestico e1) {
-        System.out.println(e1);
+    public void mostrarObjeto(Electrodomestico e2) {
+        System.out.println(e2);
     } 
 }
 

@@ -10,6 +10,13 @@ public interface ElectServicio {
     public abstract String comprobarColor(Electrodomestico e1, String color);         
     public abstract Electrodomestico crearElectrodomestico();       
     public abstract void precioFinal(Electrodomestico e1, double peso, double precio);    
+    
+    
+    
+    
+    
+    
+    
     public abstract void mostrarObjeto(Electrodomestico e1);       
     
 }

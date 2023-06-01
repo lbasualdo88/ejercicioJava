@@ -4,9 +4,9 @@ import Enumeraciones.ConsumoEner;
 
 
 public class Lavadora extends Electrodomestico {
-    private String carga;
+    private int carga;
 
-    public Lavadora(double precio, String color, ConsumoEner consumo, String carga, double peso) {
+    public Lavadora(double precio, String color, ConsumoEner consumo, double peso, int carga ) {
         super(precio, color, consumo, peso);
         this.carga = carga;
     }
@@ -14,17 +14,18 @@ public class Lavadora extends Electrodomestico {
     public Lavadora() {
     }
 
-    public String getCarga() {
+    public int getCarga() {
         return carga;
     }
 
-    public void setCarga(String carga) {
+    public void setCarga(int carga) {
         this.carga = carga;
     }
 
     @Override
     public String toString() {
-        return "Lavadora [carga=" + carga + "]";
+        return "Lavadora [precio=" + precio + ", color=" + color + ", consumo=" + consumo + ", peso=" + peso +
+        ", carga=" + carga + "]";
     }
 
  

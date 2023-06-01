@@ -9,7 +9,6 @@ public class App {
 LavadoraSevicio l1 = new LavadoraSevicio();
 Lavadora lavadora = l1.crearLavadora();
 
-
 System.out.println(lavadora);
 
 
