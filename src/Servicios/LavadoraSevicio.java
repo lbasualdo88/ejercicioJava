@@ -11,31 +11,27 @@ public class LavadoraSevicio implements ElectServicio{
     
     Scanner leer = new Scanner(System.in);
 
-    
-    
     public Lavadora crearLavadora() {
-        
-
-        
+        Lavadora l1;    
+  
         Electrodomestico e2 = crearElectrodomestico();
-        precioFinal(e2, e2.getPeso(), e2.getPrecio());
-        
         System.out.println("-------------");
         System.out.println("Ingrese Carga");
         System.out.println("-------------");
         int carga = leer.nextInt();
-        
-        return new Lavadora(e2.getPrecio(), e2.getColor(), e2.getConsumo(), e2.getPeso(), carga);
+        precioFinal(e2, e2.getPeso(), e2.getPrecio());
+        l1 = new Lavadora(e2.getPrecio(), e2.getColor(), e2.getConsumo(), e2.getPeso(), carga); 
+        return l1;
     }
-
-    public void mostrarLavadora() {
-    }
-    public void precioLavadoraFinal() {
+    public void precioLavadoraFinal(Lavadora l1) {
+////////Precio por Carga////////////        
+if (l1.getCarga() > 30) {
+    l1.setPrecio(l1.getPrecio() + 500);
+}
     }
 
     @Override
     public ConsumoEner comprobarConsumoEnergetico(Electrodomestico e1, String consumo) {
-            //String consumo = leer.next();
         ConsumoEner [] enums = ConsumoEner.values();
     for (int i = 0; i < enums.length; i++) {
         if (enums[i].toString().equals(consumo)) {
@@ -49,8 +45,7 @@ public class LavadoraSevicio implements ElectServicio{
     }
 
     @Override
-    public String comprobarColor( Electrodomestico e1, String color ) {
-       // String color =  leer.next();
+    public String comprobarColor( Electrodomestico e1, String color ) {  
         if (color.equalsIgnoreCase("negro")  || color.equalsIgnoreCase("rojo") || color.equalsIgnoreCase("azul") || color.equalsIgnoreCase("gris")) {
             e1.setColor(color);         
            } else {
@@ -63,6 +58,8 @@ public class LavadoraSevicio implements ElectServicio{
     @Override
     public Electrodomestico crearElectrodomestico() {
         Electrodomestico e1 = new Electrodomestico();
+        double precio = 1000;
+        e1.setPrecio(precio);
         System.out.println("------------------------------");
         System.out.println("Se le asigna por defecto 1000$");
         System.out.println("----------------------------------");
@@ -79,12 +76,13 @@ public class LavadoraSevicio implements ElectServicio{
         System.out.println("Ingrese el peso del Electrodomestico"); 
         System.out.println("------------------------------------");
         double peso = leer.nextDouble();
-        e1.setPeso(peso);
-        
+        e1.setPeso(peso);    
  return e1;
     }
     @Override
     public void precioFinal(Electrodomestico e2, double peso, double precio) {
+
+////////Precio por Peso////////////
         if (e2.getPeso() <= 19 ) {
             e2.setPrecio(e2.getPrecio() + 100);
         } else if (e2.getPeso() > 19 && e2.getPeso() <= 49) {
@@ -94,7 +92,7 @@ public class LavadoraSevicio implements ElectServicio{
         } else {
             e2.setPrecio(e2.getPrecio() + 1000);
         }
-
+////////Precio por Consumo///////////
          int opcion = 0;
         ConsumoEner [] enums = ConsumoEner.values();
     for (int i = 0; i < enums.length; i++) {
@@ -123,10 +121,5 @@ public class LavadoraSevicio implements ElectServicio{
             break;
         } 
     }
-
-    @Override
-    public void mostrarObjeto(Electrodomestico e2) {
-        System.out.println(e2);
-    } 
 }
 

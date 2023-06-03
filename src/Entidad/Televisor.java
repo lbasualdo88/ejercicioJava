@@ -6,7 +6,7 @@ public class Televisor extends Electrodomestico {
     private Integer resolucion;
     private boolean sintonizador;
     
-    public Televisor(Integer precio, String color, ConsumoEner consumo, Integer resolucion, boolean sintonizador, Integer peso) {
+    public Televisor(double precio, String color, ConsumoEner consumo, double peso, Integer resolucion, boolean sintonizador ) {
         super(precio, color, consumo, peso);
         this.resolucion = resolucion;
         this.sintonizador = sintonizador;
@@ -24,6 +24,11 @@ public class Televisor extends Electrodomestico {
     }
     public void setSintonizador(boolean sintonizador) {
         this.sintonizador = sintonizador;
+    }
+    @Override
+    public String toString() {
+        return "Televisor [precio=" + precio + ", color=" + color + ", consumo=" + consumo + ", peso=" + peso +
+        ", resolucion=" + resolucion + ", sintonizador=" + sintonizador + "]";
     }
 
     
